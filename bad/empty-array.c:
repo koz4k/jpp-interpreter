@@ -1,0 +1,3 @@
+// proba stworzenia pustej tablicy
+
+int[0] arr = []

@@ -1,0 +1,6 @@
+// proba przypisania wartosci stalej
+
+int f():
+   return 1
+
+f() = 2

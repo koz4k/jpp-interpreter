@@ -1,0 +1,88 @@
+layout toplevel ;
+layout ":" ;
+layout stop "else", "elif" ;
+
+
+Program. Program ::= [Stmt] ;
+
+
+SExp.           Stmt ::= Exp ;
+SAssign.        Stmt ::= Exp "=" Exp ;
+SAddAssign.     Stmt ::= Exp "+=" Exp ;
+SSubAssign.     Stmt ::= Exp "-=" Exp ;
+SMulAssign.     Stmt ::= Exp "*=" Exp ;
+SDivAssign.     Stmt ::= Exp "/=" Exp ;
+SPass.          Stmt ::= "pass" ;
+SReturn.        Stmt ::= "return" ;
+SReturnVal.     Stmt ::= "return" Exp ;
+SBreak.         Stmt ::= "break" ;
+SContinue.      Stmt ::= "continue" ;
+SPrint.         Stmt ::= "print" Exp ;
+SIf.            Stmt ::= "if" Exp ":" "{" [Stmt] "}" [Elif] ;
+SIfElse.        Stmt ::= "if" Exp ":" "{" [Stmt] "}" [Elif] "else" ":" "{" [Stmt] "}" ;
+SWhile.         Stmt ::= "while" Exp ":" "{" [Stmt] "}" ;
+SVarDef.        Stmt ::= Type Ident "=" Exp ;
+SFuncDefArgs.   Stmt ::= Type Ident "(" [VarDecl] ")" ":" "{" [Stmt] "}" ;
+SFuncDefNoArgs. Stmt ::= Type Ident "(" ")" ":" "{" [Stmt] "}" ;
+
+separator Stmt ";" ;
+
+
+Elif. Elif ::= "elif" Exp ":" "{" [Stmt] "}" ;
+
+terminator Elif "" ;
+
+
+ELambdaArgs.   Exp  ::= Type "(" [VarDecl] ")" "->" Exp ;
+ELambdaNoArgs. Exp  ::= Type "(" ")" "->" Exp ;
+
+EOr.     Exp1 ::= Exp1  "or"  Exp2 ;
+EAnd.    Exp2 ::= Exp2  "and" Exp3 ;
+ENot.    Exp3 ::= "not" Exp4 ;
+
+EEq.     Exp4 ::= Exp4  "=="  Exp5 ;
+ENeq.    Exp4 ::= Exp4  "!="  Exp5 ;
+ELt.     Exp4 ::= Exp4  "<"   Exp5 ;
+ELeq.    Exp4 ::= Exp4  "<="  Exp5 ;
+EGt.     Exp4 ::= Exp4  ">"   Exp5 ;
+EGeq.    Exp4 ::= Exp4  ">="  Exp5 ;
+
+EAdd.    Exp5 ::= Exp5  "+"   Exp6 ;
+ESub.    Exp5 ::= Exp5  "-"   Exp6 ;
+EMul.    Exp6 ::= Exp6  "*"   Exp7 ;
+EDiv.    Exp6 ::= Exp6  "/"   Exp7 ;
+
+EPlus.   Exp7 ::= "+" Exp8 ;
+EMinus.  Exp7 ::= "-" Exp8 ;
+
+EVar.    Exp8 ::= Ident ;
+EInt.    Exp8 ::= Integer ;
+ETrue.   Exp8 ::= "true" ;
+EFalse.  Exp8 ::= "false" ;
+EArray.  Exp8 ::= "[" [Exp] "]" ;
+EFill.   Exp8 ::= "[" Exp "times" Integer "]" ;
+ECall.   Exp8 ::= Exp8 "(" [Exp] ")" ;
+EIndex.  Exp8 ::= Exp8 "[" Exp "]" ;
+
+coercions Exp 8 ;
+separator Exp "," ;
+
+
+TVoid.       Type ::= "void" ;
+TInt.        Type ::= "int" ;
+TBool.       Type ::= "bool" ;
+TArray.      Type ::= Type "[" Integer "]" ;
+TFuncArgs.   Type ::= Type "(" [Type] ")" ;
+TFuncNoArgs. Type ::= Type "(" ")" ;
+TRef.        Type ::= Type "&" ;
+
+separator nonempty Type "," ;
+
+
+VarDecl. VarDecl ::= Type Ident ;
+
+separator nonempty VarDecl "," ;
+
+
+comment "//" ;
+comment "/*" "*/" ;

@@ -1,0 +1,12 @@
+/* referencje
+   przyklad pokazuje wykorzystanie referencji
+   oczekiwane wyjscie:
+   8
+                                              */
+
+int x = 1
+int& x_ref = x
+x_ref += x
+x_ref += x
+x_ref += x
+print x

@@ -1,0 +1,6 @@
+// proba wypisania void
+
+void f():
+    pass
+
+print f()

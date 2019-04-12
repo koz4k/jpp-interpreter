@@ -1,0 +1,4 @@
+// proba indeksowania wartosci typu int
+
+int x = 123
+print x[0]

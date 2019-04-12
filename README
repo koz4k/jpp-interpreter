@@ -1,0 +1,76 @@
+C: to język ze statycznym typowaniem w stylu C++ oraz wcięciami i składnią
+instrukcji sterujących w stylu Pythona.
+
+Interpreter wymaga pakietu STMonadTrans oraz nowej wersji mtl, dlatego mój
+Makefile przed kompilacją instaluje je cabalem.
+
+
+Typy:
+ - int
+ - bool
+ - referencje: int&
+ - funkcje: int(int, bool)
+ - tablice indeksowane intem: int[3]
+
+
+Instrukcje sterujące:
+ - if ... elif ... else (warunki muszą być typu bool)
+ - while z break i continue
+
+
+Funkcje:
+ - statyczne wiązanie identyfikatorów
+ - dowolne zagnieżdżenie
+ - przekazywanie parametrów przez wartość lub referencję
+ - return w dowolnym miejscu
+ - rekurencja
+ - mogą zwracać wartość lub nie (specjalny "typ" void)
+ - mogą przyjmować funkcje jako parametry
+ - mogą zwracać funkcje (przekazywanie do domknięcia przez referencję)
+ - funkcje anonimowe: int(int x, int y) -> 10 * x + y
+
+
+Tablice:
+ - homogeniczne
+ - stałej wielkości większej od 0 (wielkość jest częścią typu)
+ - mogą przechowywać wartości dowolnego typu oprócz referencji
+ - traktowane jako wartości (kopiowane przy przypisaniu i przy przekazywaniu
+   przez wartość)
+ - dowolnie zagnieżdżone, ale kolejność wymiarów odwrotna niż w C (int arr[2][3]
+   w C odpowiada int[3][2] w C: - jest to tablica 2 tablic typu int[3] i po tym
+   wymiarze indeksujemy najpierw)
+
+
+Referencje:
+ - zarówno jako argumenty funkcji, jak wartości zwracane i zwykłe zmienne
+ - inicjalizowane tak jak w C++ (int x = 0; int& y = x;), potem nie można
+   zmienić miejsca, na które wskazują
+ - można wyciągnąć referencję do elementu tablicy
+
+
+Operatory:
+ - przypisania: =, +=, -=, *=, /= (poza wyrażeniami)
+ - logiczne: or, and, not
+ - równości: ==, != (działają tylko dla wartości tych samych typów)
+ - porównania: <, <=, >, >= (działają tylko dla intów)
+ - arytmetyczne: +, -, *, /
+ - unarne: +, -
+ - indeksowanie tablic: arr[123]
+ - wywoływanie funkcji: f(123, 456)
+
+
+Inne:
+ - wartości muszą być inicjalizowane
+ - inicjalizacja tablic możliwa przez składnię int[3] arr = [0, 0, 0]
+   lub int[3] arr = [0 times 3], przy czym w tym drugim przypadku wyrażanie
+   jest ewaluowane osobno dla każdego elementu, od lewej do prawej
+ - instrukcja print wypisująca inty, boole i tablice
+ - deklaracje zmiennych i funkcji w dowolnych miejscach
+ - jawnie obsłużone błędy wykonania (np. dzielenie przez 0, wyjście poza zakres
+   tablicy)
+ - zawsze terminująca faza kontroli typów przed rozpoczączęciem wykonywania
+   programu
+ - wcięcia są obsługiwane dość swobodnie, w szczególności brak wcięcia też może
+   oznaczać początek bloku, ale nie trzeba się tym przejmować, wystarczy pisać
+   tak jak w przykładach czyli wcięcie = 4 spacje
+ - komentarze jak w C - //, /* */

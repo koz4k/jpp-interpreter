@@ -1,0 +1,13 @@
+/* suma elementow tablicy
+   przyklad pokazuje wykorzystanie petli while oraz tablic
+   oczekiwane wyjscie:
+   108
+                                                           */
+
+int[6] arr = [4, 8, 15, 16, 23, 42]
+int sum = 0
+int i = 0
+while i < 6:
+    sum += arr[i]
+    i += 1
+print sum

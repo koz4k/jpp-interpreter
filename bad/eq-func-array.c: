@@ -1,0 +1,6 @@
+// proba porownania funkcji
+
+void f():
+   pass
+
+print [f] == [f]

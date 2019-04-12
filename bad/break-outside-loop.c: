@@ -1,0 +1,4 @@
+// break poza petla
+
+void f():
+    break

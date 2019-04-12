@@ -1,0 +1,6 @@
+// proba zadeklarowania zmiennej typu void
+
+void f():
+    pass
+
+void x = f()

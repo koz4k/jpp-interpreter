@@ -1,0 +1,19 @@
+/* funkcja signum
+   przyklad pokazuje wykorzystanie konstrukcji if .. elif .. else
+   oczekiwane wyjscie:
+   1
+   -1
+   0
+                                                                  */
+
+int sgn(int x):
+    if x > 0:
+        return 1
+    elif x < 0:
+        return -1
+    else:
+        return 0
+
+print sgn(123)
+print sgn(-456)
+print sgn(0)

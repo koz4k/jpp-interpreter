@@ -1,0 +1,67 @@
+/* mnozenie macierzy 2x2
+   przyklad pokazuje wykorzystanie referencji do elementow tablic,
+   przekazywania funkcji jako argumentów oraz petli while
+   oczekiwane wyjscie:
+   [0, 1]
+   [-1, 0]
+                                                                   */
+
+/* macierze sa zapisywane w rozny sposob, ale reprezentowane tak samo
+   poprzez funkcje int&(int, int) zwracajace referencje do elementu
+   w danym wierszu, w danej kolumnie                                   */
+
+/* macierz obrotu o 90 stopni przeciwnie do ruchu wkazowek zegara,
+   zapisana w macierzy 1d wierszowo                                */
+int[4] data1 = [0 times 4]
+int& mat1(int r, int c):
+    return data1[r * 2 + c]
+mat1(0, 0) = 0
+mat1(0, 1) = -1
+mat1(1, 0) = 1
+mat1(1, 1) = 0
+
+/* macierz obrotu o 180 stopni, zapisana w tablicy 1d kolumnowo */
+int[4] data2 = [0 times 4]
+int& mat2(int r, int c):
+    return data2[c * 2 + r]
+mat2(0, 0) = -1
+mat2(0, 1) = 0
+mat2(1, 0) = 0
+mat2(1, 1) = -1
+
+/* wynik mnozenia: macierz obrotu o 90 stopni zgodnie z ruchem wskazowek
+   zegara, zapisana w tablicy 2d                                         */
+int[2][2] data3 = [[0 times 2] times 2]
+int& mat3(int r, int c):
+    return data3[r][c]
+
+/* funkcja mnozaca macierze, przyjmujaca macierze mat1 i mat2 do wymnozenia,
+   macierz mat3 do zapisania wyniku oraz ich wielkosci:
+   mat1 jest rozmiaru n x o, mat2 - o x m, mat3 - n x m                      */
+void multiply(int&(int, int) mat1, int&(int, int) mat2, int&(int, int) mat3,
+              int n, int o, int m):
+    int i = 0
+    while i < n:
+        int j = 0
+        while j < m:
+            int sum = 0
+            int k = 0
+            while k < o:
+                sum += mat1(i, k) * mat2(k, j)
+                k += 1
+            mat3(i, j) = sum
+            j += 1
+        i += 1
+
+multiply(mat1, mat2, mat3, 2, 2, 2)
+
+/* wypisanie wyniku mnozenia */
+int i = 0
+while i < 2:
+    int[2] row = [0, 0]
+    int j = 0
+    while j < 2:
+       row[j] = mat3(i, j)
+       j += 1
+    print row
+    i += 1

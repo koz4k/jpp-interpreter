@@ -1,0 +1,3 @@
+// proba przypisania wartosci bool do zmiennej int
+
+int x = true

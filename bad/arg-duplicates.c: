@@ -1,0 +1,4 @@
+// powtarzajace sie nazwy argumentow funkcji
+
+void f(int x, int y, int x):
+    pass

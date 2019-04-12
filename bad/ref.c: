@@ -1,0 +1,3 @@
+// proba inicjalizacji referencji zwykla wartoscia
+
+int& x = 1

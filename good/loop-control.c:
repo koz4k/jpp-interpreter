@@ -1,0 +1,24 @@
+ /* instrukcje sterujace przebiegiem petli
+    przyklad pokazuje wykorzystanie instrukcji break, continue i return
+    oczekiwane wyjscie:
+    5
+    10
+                                                                        */
+
+int f():
+    int i = 0
+    while true:
+        i += 1
+        if i < 5:
+            continue
+        break
+
+    print i
+
+    while i < 20:
+        if i == 10:
+            return i
+        i += 1
+    return 0
+
+print f()

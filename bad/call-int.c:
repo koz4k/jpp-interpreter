@@ -1,0 +1,4 @@
+// proba zawolania inta jak funkcji
+
+int x = 1
+x()

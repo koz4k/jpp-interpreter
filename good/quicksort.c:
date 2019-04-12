@@ -1,0 +1,33 @@
+ /* quicksort
+    przyklad pokazuje wykorzystanie tablic, rekurencji,
+    zagniezdzonych funkcji, referencji, petli while oraz instrukcji if
+    oczekiwane wyjscie:
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                                                                       */
+
+void quicksort(int[10]& arr, int lo, int hi):
+    int partition():
+        void swap(int& a, int& b):
+            int tmp = a
+            a = b
+            b = tmp
+
+        int pivot = arr[hi]
+        int i = lo
+        int j = lo
+        while j < hi:
+            if arr[j] <= pivot:
+                swap(arr[i], arr[j])
+                i += 1
+            j += 1
+        swap(arr[i], arr[hi])
+        return i
+
+    if lo < hi:
+        int p = partition()
+        quicksort(arr, lo, p - 1)
+        quicksort(arr, p + 1, hi)
+
+int[10] arr = [7, 5, 4, 2, 8, 6, 1, 0, 3, 9]
+quicksort(arr, 0, 9)
+print arr

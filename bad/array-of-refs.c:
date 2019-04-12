@@ -1,0 +1,6 @@
+// proba zadeklarowania tablicy referencji
+
+int x = 1
+int y = 2
+int z = 3
+int&[3] arr = [x, y, z]

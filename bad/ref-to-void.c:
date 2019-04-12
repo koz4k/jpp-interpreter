@@ -1,0 +1,4 @@
+// referencja do void
+
+void& f():
+    pass

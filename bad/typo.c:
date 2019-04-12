@@ -1,0 +1,6 @@
+// blad skladniowy: elfi zamiast elif
+
+if true:
+    print 123
+elfi:
+    print 456
